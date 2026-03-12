@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "LAi Design Associates"
+version = "1.0.0"
+id = "artifacts/lai-design"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+localPort = 21189
+name = "web"
+paths = ["/"]
+
+[services.development]
+run = "pnpm --filter @workspace/lai-design run dev"
+
+[services.env]
+PORT = "21189"
+BASE_PATH = "/"
+
+[services.production]
+build = ["pnpm", "--filter", "@workspace/lai-design", "run", "build"]
+publicDir = "artifacts/lai-design/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"

@@ -1,0 +1,176 @@
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { motion } from "framer-motion";
+import { Instagram, Linkedin, ArrowRight, CheckCircle2 } from "lucide-react";
+import { contactSchema, type ContactInput, useSubmitContact } from "@/hooks/use-contact";
+
+export function ContactFooter() {
+  const submitMutation = useSubmitContact();
+  
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<ContactInput>({
+    resolver: zodResolver(contactSchema)
+  });
+
+  const onSubmit = (data: ContactInput) => {
+    submitMutation.mutate(data, {
+      onSuccess: () => {
+        reset();
+      }
+    });
+  };
+
+  return (
+    <footer id="contact" className="bg-background pt-32 pb-12 px-4 md:px-6 border-t border-border">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 mb-32">
+          
+          {/* Left Column: Info */}
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="font-display text-5xl md:text-6xl text-foreground mb-8 leading-tight">
+              Start Your <br/>
+              <span className="text-primary italic">Project</span>
+            </h2>
+            
+            <div className="space-y-8 font-sans text-muted-foreground text-lg">
+              <div>
+                <p className="font-display text-foreground text-xl mb-2">LAi Design Associates</p>
+                <p>12800 University Drive, Suite 300</p>
+                <p>Fort Myers, FL 33907</p>
+              </div>
+              
+              <div>
+                <p className="hover:text-primary transition-colors cursor-pointer inline-flex items-center group">
+                  <ArrowRight className="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transition-opacity -ml-6 group-hover:ml-0" />
+                  (239) 555-0100
+                </p>
+                <br/>
+                <p className="hover:text-primary transition-colors cursor-pointer inline-flex items-center group mt-2">
+                  <ArrowRight className="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transition-opacity -ml-6 group-hover:ml-0" />
+                  hello@laidesignassoc.com
+                </p>
+              </div>
+            </div>
+
+            <div className="flex space-x-6 mt-12">
+              <a href="#" className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300">
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a href="#" className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300">
+                <Linkedin className="w-5 h-5" />
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Right Column: Form */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="bg-card p-8 md:p-12 rounded-lg border border-border/50 shadow-2xl"
+          >
+            {submitMutation.isSuccess ? (
+              <div className="h-full flex flex-col items-center justify-center text-center py-20">
+                <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                  <CheckCircle2 className="w-10 h-10 text-primary" />
+                </div>
+                <h3 className="font-display text-3xl text-foreground mb-4">Inquiry Received</h3>
+                <p className="font-sans text-muted-foreground">Thank you for reaching out. A member of our studio will contact you shortly to discuss your vision.</p>
+                <button 
+                  onClick={() => submitMutation.reset()}
+                  className="mt-8 font-sans text-sm tracking-widest text-primary uppercase hover:text-foreground transition-colors border-b border-primary hover:border-foreground pb-1"
+                >
+                  Send another message
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 font-sans">
+                
+                <div className="relative">
+                  <input 
+                    {...register("name")}
+                    type="text" 
+                    placeholder="Full Name"
+                    className="w-full bg-transparent border-b border-border py-4 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors peer"
+                  />
+                  {errors.name && <span className="absolute -bottom-5 left-0 text-xs text-red-500">{errors.name.message}</span>}
+                </div>
+
+                <div className="relative">
+                  <input 
+                    {...register("email")}
+                    type="email" 
+                    placeholder="Email Address"
+                    className="w-full bg-transparent border-b border-border py-4 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors peer"
+                  />
+                  {errors.email && <span className="absolute -bottom-5 left-0 text-xs text-red-500">{errors.email.message}</span>}
+                </div>
+
+                <div className="relative">
+                  <select 
+                    {...register("projectType")}
+                    defaultValue=""
+                    className="w-full bg-transparent border-b border-border py-4 text-foreground focus:outline-none focus:border-primary transition-colors appearance-none cursor-pointer"
+                  >
+                    <option value="" disabled className="bg-card text-muted-foreground">Select Project Type...</option>
+                    <option value="residential" className="bg-card">Residential</option>
+                    <option value="commercial" className="bg-card">Commercial</option>
+                    <option value="mixed-use" className="bg-card">Mixed-Use</option>
+                    <option value="civic" className="bg-card">Civic / Community</option>
+                  </select>
+                  {errors.projectType && <span className="absolute -bottom-5 left-0 text-xs text-red-500">{errors.projectType.message}</span>}
+                  <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-muted-foreground">
+                    <ChevronDownIcon />
+                  </div>
+                </div>
+
+                <div className="relative">
+                  <textarea 
+                    {...register("message")}
+                    placeholder="Tell us about your project vision..."
+                    rows={4}
+                    className="w-full bg-transparent border-b border-border py-4 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors resize-none"
+                  />
+                  {errors.message && <span className="absolute -bottom-5 left-0 text-xs text-red-500">{errors.message.message}</span>}
+                </div>
+
+                <button 
+                  type="submit"
+                  disabled={submitMutation.isPending}
+                  className="w-full bg-primary text-primary-foreground font-sans font-medium tracking-widest uppercase py-5 mt-4 hover:bg-foreground hover:text-background transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center"
+                >
+                  {submitMutation.isPending ? (
+                    <div className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
+                  ) : "Submit Inquiry"}
+                </button>
+              </form>
+            )}
+          </motion.div>
+        </div>
+
+        {/* Footer Bottom */}
+        <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center text-xs font-sans text-muted-foreground tracking-wider uppercase">
+          <p>© {new Date().getFullYear()} LAi Design Associates. All Rights Reserved.</p>
+          <div className="flex space-x-6 mt-4 md:mt-0">
+            <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+// Simple internal icon component since Lucide chevron down interacts weirdly with selects sometimes
+function ChevronDownIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  );
+}

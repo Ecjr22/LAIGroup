@@ -1,0 +1,18 @@
+packages:
+  "framer-motion": "For high-quality scroll and entrance animations"
+  "react-helmet-async": "For managing SEO meta tags and document head"
+  "react-hook-form": "For robust contact form state management"
+  "@hookform/resolvers": "For Zod schema validation integration"
+  "zod": "For contact form schema definition"
+
+images:
+  - path: "artifacts/lai-design/public/images/topographic-lines.png"
+    description: "Minimalist dark charcoal gray abstract topographic contour lines on a black background, highly detailed, architectural and sophisticated style"
+    aspect_ratio: "16:9"
+  - path: "artifacts/lai-design/public/images/architectural-sketch.png"
+    description: "Close up of an architectural blueprint and hand sketch on dark paper with white and gold lines, moody lighting"
+    aspect_ratio: "1:1"
+
+notes:
+  - Form submission assumes a POST /api/contact endpoint exists
+  - Images rely heavily on Unsplash for realistic, high-quality architectural photography to meet the editorial design requirement
