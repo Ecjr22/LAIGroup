@@ -41,7 +41,7 @@ const architects = [
 
 export function TeamSection() {
   return (
-    <section className="py-24 md:py-32 px-4 md:px-6 bg-card/30">
+    <section id="team" className="py-24 md:py-32 px-4 md:px-6 bg-card/30">
       <div className="max-w-7xl mx-auto">
 
         <motion.div

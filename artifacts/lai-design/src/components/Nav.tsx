@@ -24,7 +24,8 @@ export function Nav() {
 
   const navLinks = [
     { name: "Work", id: "work" },
-    { name: "Studio", id: "studio" },
+    { name: "About", id: "studio" },
+    { name: "Team", id: "team" },
     { name: "Contact", id: "contact" },
   ];
 
