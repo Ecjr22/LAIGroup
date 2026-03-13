@@ -13,7 +13,6 @@ export function Hero() {
         style={{ y, opacity }}
         className="absolute inset-0 w-full h-[120%]"
       >
-        {/* landing page hero scenic architectural modern mansion */}
         <img 
           src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=2000"
           alt="Modern residential architecture in Florida"
@@ -21,33 +20,63 @@ export function Hero() {
         />
       </motion.div>
 
-      {/* Gradient Wash for Text Contrast */}
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-transparent" />
+      {/* Gradient overlays */}
+      <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.4) 35%, transparent 60%)' }} />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0d0d0f] to-transparent" />
 
-      {/* Content */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 pt-20">
+      {/* Content — anchored in the upper-center zone */}
+      <div className="absolute inset-0 flex flex-col items-start justify-start px-8 md:px-16 lg:px-24" style={{ paddingTop: 'max(5rem, calc(50vh - 18rem))', paddingBottom: '0' }}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-5xl"
+          transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h1 className="font-display text-6xl md:text-8xl lg:text-[7rem] text-foreground leading-[1.0] tracking-wide drop-shadow-2xl font-light">
-            Bold Design.<br />
-            <span className="italic text-primary/90">Limitless</span> Vision.
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="font-display text-xs md:text-sm tracking-[0.5em] uppercase text-primary/80 mb-4"
+          >
+            Building a Future
+          </motion.p>
+
+          <h1 className="font-display text-foreground tracking-tight drop-shadow-2xl uppercase font-bold" style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)', lineHeight: 1.05 }}>
+            <motion.span
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="block"
+            >Plan.</motion.span>
+            <motion.span
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.35 }}
+              className="block text-primary/90"
+            >Design.</motion.span>
+            <motion.span
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.5 }}
+              className="block"
+            >Engineer.</motion.span>
+            <motion.span
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.65 }}
+              className="block text-white/90"
+            >Construct.</motion.span>
           </h1>
+
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1 }}
-            className="mt-8 flex items-center justify-center space-x-4"
+            transition={{ duration: 1, delay: 1.1 }}
+            className="mt-6 flex items-center space-x-4"
           >
-            <div className="h-[1px] w-12 bg-primary/50" />
-            <p className="font-sans text-xs md:text-sm tracking-[0.4em] uppercase text-foreground/70">
+            <div className="h-[1px] w-10 bg-primary/60" />
+            <p className="font-sans text-xs md:text-sm tracking-[0.4em] uppercase text-foreground/60">
               Florida <span className="text-primary mx-2">·</span> South Carolina <span className="text-primary mx-2">·</span> Nationwide
             </p>
-            <div className="h-[1px] w-12 bg-primary/50" />
           </motion.div>
         </motion.div>
       </div>
