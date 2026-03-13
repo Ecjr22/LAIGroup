@@ -24,8 +24,8 @@ export function Hero() {
       <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.4) 35%, transparent 60%)' }} />
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0d0d0f] to-transparent" />
 
-      {/* Content — anchored in the upper-center zone */}
-      <div className="absolute inset-0 flex flex-col items-start justify-start px-8 md:px-16 lg:px-24" style={{ paddingTop: 'max(5rem, calc(50vh - 18rem))', paddingBottom: '0' }}>
+      {/* Content */}
+      <div className="absolute inset-0 flex flex-col items-start justify-center px-8 md:px-16 lg:px-24 pt-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -35,8 +35,8 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.15 }}
-            className="font-display text-foreground uppercase font-bold drop-shadow-2xl mb-6"
-            style={{ fontSize: 'clamp(3.5rem, 8vw, 7rem)', lineHeight: 1.05 }}
+            className="font-display text-foreground uppercase font-bold drop-shadow-2xl mb-5"
+            style={{ fontSize: 'clamp(2.8rem, 5.5vw, 5.5rem)', lineHeight: 1.08 }}
           >
             Building<br />a Future
           </motion.h1>
