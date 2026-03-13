@@ -73,6 +73,9 @@ export default function Home() {
       <Nav />
       <Hero />
 
+      {/* Timelapse */}
+      <TimeLapse />
+
       {/* Services */}
       <section className="py-24 md:py-32 px-6 bg-background">
         <div className="max-w-7xl mx-auto">
@@ -239,9 +242,6 @@ export default function Home() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Timelapse */}
-      <TimeLapse />
 
       {/* About Teaser */}
       <section className="py-24 md:py-32 px-6 bg-muted">
