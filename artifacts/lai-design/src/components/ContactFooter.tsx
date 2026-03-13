@@ -24,12 +24,13 @@ export function ContactFooter() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 mb-16">
           
-          {/* Left Column: Info */}
+          {/* Left Column: Info — moves below form on mobile */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="order-2 lg:order-1"
           >
             <div className="space-y-8 font-sans text-muted-foreground text-base mt-8">
               <div>
@@ -56,13 +57,13 @@ export function ContactFooter() {
             </div>
           </motion.div>
 
-          {/* Right Column: Form */}
+          {/* Right Column: Form — shows first on mobile */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="bg-muted p-8 md:p-12 rounded-2xl border border-border shadow-sm"
+            className="order-1 lg:order-2 bg-muted p-8 md:p-12 rounded-2xl border border-border shadow-sm"
           >
             {submitMutation.isSuccess ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-20">
