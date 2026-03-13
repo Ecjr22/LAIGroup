@@ -32,7 +32,7 @@ export function SiteFooter() {
             <p className="font-sans text-xs tracking-[0.25em] uppercase text-muted-foreground mb-4">Navigate</p>
             <div className="flex flex-col space-y-2">
               {[
-                { name: "Work", href: "/work" },
+                { name: "Our Work", href: "/work" },
                 { name: "About", href: "/about" },
                 { name: "Team", href: "/team" },
                 { name: "Contact", href: "/contact" },
