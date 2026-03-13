@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 const architects = [
@@ -40,6 +41,10 @@ const architects = [
 ];
 
 export function TeamSection() {
+  const [flipped, setFlipped] = useState<string | null>(null);
+
+  const toggle = (id: string) => setFlipped(prev => prev === id ? null : id);
+
   return (
     <section id="team" className="py-16 md:py-24 px-4 md:px-6 bg-background">
       <div className="max-w-7xl mx-auto">
@@ -52,67 +57,71 @@ export function TeamSection() {
           className="mb-14 md:mb-20"
         >
           <p className="font-sans text-sm text-muted-foreground leading-relaxed">
-            Hover each card to discover the inspirations and passions behind the craft.
+            Tap each card to discover the inspirations and passions behind the craft.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-          {architects.map((person, i) => (
-            <motion.div
-              key={person.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, delay: i * 0.15 }}
-              className="group perspective-1000 cursor-pointer"
-            >
-              <div className="relative aspect-[3/4] w-full transform-style-3d transition-transform duration-1000 group-hover:rotate-y-180 shadow-2xl shadow-black/50">
+          {architects.map((person, i) => {
+            const isFlipped = flipped === person.id;
+            return (
+              <motion.div
+                key={person.id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.7, delay: i * 0.15 }}
+                className="perspective-1000 cursor-pointer select-none"
+                onClick={() => toggle(person.id)}
+              >
+                <div
+                  className="relative aspect-[3/4] w-full transform-style-3d transition-transform duration-700 shadow-2xl shadow-black/50"
+                  style={{ transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)" }}
+                >
 
-                {/* FRONT: Portrait */}
-                <div className="absolute inset-0 backface-hidden bg-card overflow-hidden rounded-sm">
-                  <img
-                    src={person.image}
-                    alt={person.name}
-                    loading="lazy"
-                    referrerPolicy="no-referrer"
-                    crossOrigin="anonymous"
-                    className="w-full h-full object-cover filter grayscale-[20%] contrast-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-90" />
-                  <div className="absolute bottom-0 left-0 p-8">
-                    <h3 className="font-display text-2xl text-white mb-1">{person.name}</h3>
-                    <p className="font-sans text-xs text-primary tracking-widest uppercase">{person.role}</p>
+                  {/* FRONT: Portrait */}
+                  <div className="absolute inset-0 backface-hidden bg-card overflow-hidden rounded-sm">
+                    <img
+                      src={person.image}
+                      alt={person.name}
+                      loading="lazy"
+                      referrerPolicy="no-referrer"
+                      crossOrigin="anonymous"
+                      className="w-full h-full object-cover filter grayscale-[20%] contrast-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-90" />
+                    <div className="absolute bottom-0 left-0 p-8">
+                      <h3 className="font-display text-2xl text-white mb-1">{person.name}</h3>
+                      <p className="font-sans text-xs text-primary tracking-widest uppercase">{person.role}</p>
+                    </div>
                   </div>
-                  <div className="absolute top-6 right-6 w-9 h-9 rounded-full border border-white/20 flex items-center justify-center backdrop-blur-md">
-                    <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
+
+                  {/* BACK: Inspirations Collage */}
+                  <div className="absolute inset-0 backface-hidden rotate-y-180 bg-card border border-border rounded-sm flex flex-col overflow-hidden">
+                    <div className="p-6 pb-4 flex-shrink-0 bg-background/60 border-b border-border">
+                      <h4 className="font-display text-lg text-foreground">Inspirations</h4>
+                      <p className="font-sans text-xs text-muted-foreground mt-1">The elements behind the craft</p>
+                    </div>
+                    <div className="flex-1 p-3 grid grid-cols-2 grid-rows-2 gap-2 bg-muted/20">
+                      {person.collage.map((img, idx) => (
+                        <div key={idx} className="relative overflow-hidden rounded-sm bg-background">
+                          <img
+                            src={img}
+                            alt="Inspiration"
+                            loading="lazy"
+                            referrerPolicy="no-referrer"
+                            crossOrigin="anonymous"
+                            className="absolute inset-0 w-full h-full object-cover opacity-80"
+                          />
+                        </div>
+                      ))}
+                    </div>
                   </div>
+
                 </div>
-
-                {/* BACK: Inspirations Collage */}
-                <div className="absolute inset-0 backface-hidden rotate-y-180 bg-card border border-border rounded-sm flex flex-col overflow-hidden">
-                  <div className="p-6 pb-4 flex-shrink-0 bg-background/60 border-b border-border">
-                    <h4 className="font-display text-lg text-foreground">Inspirations</h4>
-                    <p className="font-sans text-xs text-muted-foreground mt-1">The elements behind the craft</p>
-                  </div>
-                  <div className="flex-1 p-3 grid grid-cols-2 grid-rows-2 gap-2 bg-muted/20">
-                    {person.collage.map((img, idx) => (
-                      <div key={idx} className="relative overflow-hidden rounded-sm bg-background">
-                        <img
-                          src={img}
-                          alt="Inspiration"
-                          loading="lazy"
-                          referrerPolicy="no-referrer"
-                          crossOrigin="anonymous"
-                          className="absolute inset-0 w-full h-full object-cover opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-500"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
 
       </div>
