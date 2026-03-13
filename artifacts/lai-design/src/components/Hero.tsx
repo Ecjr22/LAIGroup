@@ -31,51 +31,37 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         >
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-display text-xs md:text-sm tracking-[0.5em] uppercase text-primary/80 mb-4"
+            transition={{ duration: 1, delay: 0.15 }}
+            className="font-display text-foreground uppercase font-bold drop-shadow-2xl mb-6"
+            style={{ fontSize: 'clamp(3.5rem, 8vw, 7rem)', lineHeight: 1.05 }}
           >
-            Building a Future
-          </motion.p>
+            Building<br />a Future
+          </motion.h1>
 
-          <h1 className="font-display text-foreground tracking-tight drop-shadow-2xl uppercase font-bold" style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)', lineHeight: 1.05 }}>
-            <motion.span
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="block"
-            >Plan.</motion.span>
-            <motion.span
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.35 }}
-              className="block text-primary/90"
-            >Design.</motion.span>
-            <motion.span
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.5 }}
-              className="block"
-            >Engineer.</motion.span>
-            <motion.span
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.65 }}
-              className="block text-white/90"
-            >Construct.</motion.span>
-          </h1>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="flex items-center space-x-3 mb-3"
+          >
+            <div className="h-[1px] w-8 bg-primary/70 shrink-0" />
+            <p className="font-sans text-xs tracking-[0.35em] uppercase text-primary/80">
+              Plan <span className="mx-1 text-primary/40">·</span> Design <span className="mx-1 text-primary/40">·</span> Engineer <span className="mx-1 text-primary/40">·</span> Construct
+            </p>
+          </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1.1 }}
-            className="mt-6 flex items-center space-x-4"
+            transition={{ duration: 1, delay: 0.9 }}
+            className="flex items-center space-x-3"
           >
-            <div className="h-[1px] w-10 bg-primary/60" />
-            <p className="font-sans text-xs md:text-sm tracking-[0.4em] uppercase text-foreground/60">
-              Florida <span className="text-primary mx-2">·</span> South Carolina <span className="text-primary mx-2">·</span> Nationwide
+            <div className="h-[1px] w-8 bg-border/50 shrink-0" />
+            <p className="font-sans text-xs tracking-[0.35em] uppercase text-foreground/45">
+              Florida <span className="mx-1">·</span> South Carolina <span className="mx-1">·</span> Nationwide
             </p>
           </motion.div>
         </motion.div>
