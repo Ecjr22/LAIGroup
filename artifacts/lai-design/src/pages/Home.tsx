@@ -3,7 +3,7 @@ import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
 import { WorkGrid } from "@/components/WorkGrid";
 import { AboutUs } from "@/components/AboutUs";
-import { DroneView } from "@/components/DroneView";
+import { TimeLapse } from "@/components/TimeLapse";
 import { ContactFooter } from "@/components/ContactFooter";
 
 export default function Home() {
@@ -86,6 +86,7 @@ export default function Home() {
       <main className="bg-background min-h-screen">
         <Nav />
         <Hero />
+        <TimeLapse />
         <WorkGrid />
         
         {/* A beautiful visual break with the sketch image from requirements */}
@@ -98,7 +99,6 @@ export default function Home() {
         </section>
 
         <AboutUs />
-        <DroneView />
         <ContactFooter />
       </main>
     </>
