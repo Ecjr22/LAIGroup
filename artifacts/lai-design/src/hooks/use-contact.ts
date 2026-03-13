@@ -10,21 +10,24 @@ export const contactSchema = z.object({
 
 export type ContactInput = z.infer<typeof contactSchema>;
 
+function encode(data: Record<string, string>) {
+  return Object.entries(data)
+    .map(([k, v]) => encodeURIComponent(k) + "=" + encodeURIComponent(v))
+    .join("&");
+}
+
 export function useSubmitContact() {
   return useMutation({
     mutationFn: async (data: ContactInput) => {
-      // Assuming a standard REST endpoint for contact submission
-      const res = await fetch("/api/contact", {
+      const res = await fetch("/", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({ "form-name": "contact", ...data }),
       });
-      
+
       if (!res.ok) {
         throw new Error("Failed to submit contact form");
       }
-      
-      return res.json();
     },
   });
 }

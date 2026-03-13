@@ -7,8 +7,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      // Restore path after GitHub Pages 404 redirect
+      (function () {
+        var redirect = window.location.search.slice(1);
+        if (redirect[0] === '/') {
+          var decoded = redirect.split('&').map(function (s) {
+            return s.replace(/~and~/g, '&');
+          }).join('?');
+          window.history.replaceState(null, null,
+            window.location.pathname.slice(0, -1) + decoded + window.location.hash
+          );
+        }
+      })();
+    </script>
   </head>
   <body>
+    <!-- Hidden form for Netlify build-time detection -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <select name="projectType"></select>
+      <textarea name="message"></textarea>
+    </form>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
