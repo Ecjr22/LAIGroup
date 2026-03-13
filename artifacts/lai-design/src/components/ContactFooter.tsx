@@ -44,20 +44,15 @@ export function ContactFooter() {
               </div>
               
               <div>
-                <p className="hover:text-primary transition-colors cursor-pointer inline-flex items-center group">
+                <a href="tel:+12394056888" className="hover:text-primary transition-colors cursor-pointer inline-flex items-center group">
                   <ArrowRight className="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transition-opacity -ml-6 group-hover:ml-0" />
                   239-405-6888
-                </p>
-                <br/>
-                <p className="hover:text-primary transition-colors cursor-pointer inline-flex items-center group mt-2">
-                  <ArrowRight className="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transition-opacity -ml-6 group-hover:ml-0" />
-                  hello@laigroup.com
-                </p>
+                </a>
               </div>
             </div>
 
             <div className="flex space-x-6 mt-12">
-              <a href="#" className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300">
+              <a href="https://www.instagram.com/laigroupfl/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300">
                 <Instagram className="w-5 h-5" />
               </a>
               <a href="#" className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300">
