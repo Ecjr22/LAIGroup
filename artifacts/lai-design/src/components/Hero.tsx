@@ -42,26 +42,16 @@ export function Hero() {
           </motion.h1>
 
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="flex items-center space-x-3 mb-3"
+            className="space-y-3"
           >
-            <div className="h-[1px] w-8 bg-primary/70 shrink-0" />
-            <p className="font-sans text-xs tracking-[0.35em] uppercase text-primary/80">
-              Plan <span className="mx-1 text-primary/40">·</span> Design <span className="mx-1 text-primary/40">·</span> Engineer <span className="mx-1 text-primary/40">·</span> Construct
+            <p className="font-sans text-sm md:text-base tracking-[0.25em] uppercase text-white/90">
+              Plan · Design · Engineer · Construct
             </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.9 }}
-            className="flex items-center space-x-3"
-          >
-            <div className="h-[1px] w-8 bg-border/50 shrink-0" />
-            <p className="font-sans text-xs tracking-[0.35em] uppercase text-foreground/45">
-              Florida <span className="mx-1">·</span> South Carolina <span className="mx-1">·</span> Nationwide
+            <p className="font-sans text-xs md:text-sm tracking-[0.2em] uppercase text-white/55">
+              Florida · South Carolina · Nationwide
             </p>
           </motion.div>
         </motion.div>
