@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [master]
+    branches: [master, Multipage-Light]
   workflow_dispatch:
 
 permissions:
@@ -19,19 +19,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: pnpm/action-setup@v4
         with:
           version: 9
+
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: "20.11"
           cache: "pnpm"
+
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
+
       - name: Build for GitHub Pages
         run: pnpm --filter @workspace/lai-design run build:pages
         env:
           VITE_BASE: ${{ vars.VITE_BASE || '/' }}
+
+      - name: List build output (debug)
+        run: ls -la artifacts/lai-design/dist/public
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
