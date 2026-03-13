@@ -5,10 +5,12 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const base = process.env.VITE_BASE ?? "/";
 
 export default defineConfig({
-  base,
+  base: "./",
+  define: {
+    "import.meta.env.MODE": JSON.stringify("pages"),
+  },
   plugins: [
     react(),
     tailwindcss(),

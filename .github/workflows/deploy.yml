@@ -31,12 +31,11 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
+
       - name: Build for GitHub Pages
         run: pnpm --filter @workspace/lai-design run build:pages
-        env:
-          VITE_BASE: ${{ vars.VITE_BASE || '/' }}
 
-      - name: List build output (debug)
+      - name: List build output
         run: ls -la artifacts/lai-design/dist/public
 
       - name: Upload artifact

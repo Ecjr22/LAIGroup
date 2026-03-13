@@ -1,5 +1,6 @@
 import { Component, type ReactNode } from "react";
 import { Switch, Route, Router as WouterRouter } from "wouter";
+import { useHashLocation } from "wouter/use-hash-location";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HelmetProvider } from "react-helmet-async";
 import Home from "./pages/Home";
@@ -56,14 +57,22 @@ function Router() {
   );
 }
 
+const isPages = import.meta.env.MODE === "pages";
+
 function App() {
   return (
     <ErrorBoundary>
       <HelmetProvider>
         <QueryClientProvider client={queryClient}>
-          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-            <Router />
-          </WouterRouter>
+          {isPages ? (
+            <WouterRouter hook={useHashLocation}>
+              <Router />
+            </WouterRouter>
+          ) : (
+            <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+              <Router />
+            </WouterRouter>
+          )}
         </QueryClientProvider>
       </HelmetProvider>
     </ErrorBoundary>
