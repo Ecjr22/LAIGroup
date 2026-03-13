@@ -42,10 +42,7 @@ export function Nav() {
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
           <span className="font-display text-2xl tracking-widest uppercase text-foreground group-hover:text-primary transition-colors">
-            LAi Design
-          </span>
-          <span className="font-sans text-[0.6rem] tracking-[0.3em] text-muted-foreground uppercase mt-1">
-            Associates
+            LAI GROUP
           </span>
         </div>
 

@@ -38,7 +38,7 @@ export function ContactFooter() {
             
             <div className="space-y-8 font-sans text-muted-foreground text-lg">
               <div>
-                <p className="font-display text-foreground text-xl mb-2">LAi Design Associates</p>
+                <p className="font-display text-foreground text-xl mb-2">LAI Group</p>
                 <p>12800 University Drive, Suite 300</p>
                 <p>Fort Myers, FL 33907</p>
               </div>
@@ -51,7 +51,7 @@ export function ContactFooter() {
                 <br/>
                 <p className="hover:text-primary transition-colors cursor-pointer inline-flex items-center group mt-2">
                   <ArrowRight className="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transition-opacity -ml-6 group-hover:ml-0" />
-                  hello@laidesignassoc.com
+                  hello@laigroup.com
                 </p>
               </div>
             </div>
@@ -155,7 +155,7 @@ export function ContactFooter() {
 
         {/* Footer Bottom */}
         <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center text-xs font-sans text-muted-foreground tracking-wider uppercase">
-          <p>© {new Date().getFullYear()} LAi Design Associates. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} LAI Group. All Rights Reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>

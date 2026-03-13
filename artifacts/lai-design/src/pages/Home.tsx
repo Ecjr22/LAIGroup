@@ -10,10 +10,10 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>LAi Design Associates | Architects in Fort Myers & Southwest Florida</title>
+        <title>LAI Group | Architects in Fort Myers & Southwest Florida</title>
         <meta 
           name="description" 
-          content="LAi Design Associates is a premier architectural firm based in Fort Myers, FL. Award-winning residential, commercial, and mixed-use architecture across Southwest Florida. Serving Naples, Cape Coral, Bonita Springs & beyond." 
+          content="LAI Group is a premier architectural firm based in Fort Myers, FL. Award-winning residential, commercial, and mixed-use architecture across Southwest Florida." 
         />
         <meta 
           name="keywords" 
@@ -24,27 +24,27 @@ export default function Home() {
         <meta name="geo.placename" content="Fort Myers, Florida" />
         <meta name="geo.position" content="26.6406;-81.8723" />
         <meta name="ICBM" content="26.6406, -81.8723" />
-        <link rel="canonical" href="https://laidesignassoc.com/" />
+        <link rel="canonical" href="https://laigroup.com/" />
 
-        <meta property="og:title" content="LAi Design Associates | Architects in Fort Myers & Southwest Florida" />
+        <meta property="og:title" content="LAI Group | Architects in Fort Myers & Southwest Florida" />
         <meta property="og:description" content="Premier architectural design studio shaping the built environment of Southwest Florida. Residential, commercial, and civic architecture with a vision." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://laidesignassoc.com/" />
+        <meta property="og:url" content="https://laigroup.com/" />
         <meta property="og:locale" content="en_US" />
-        <meta property="og:site_name" content="LAi Design Associates" />
+        <meta property="og:site_name" content="LAI Group" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="LAi Design Associates | Architects in Fort Myers, FL" />
+        <meta name="twitter:title" content="LAI Group | Architects in Fort Myers, FL" />
         <meta name="twitter:description" content="Award-winning architecture firm serving Fort Myers, Naples, Cape Coral & Southwest Florida." />
 
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": ["LocalBusiness", "ProfessionalService", "ArchitecturalService"],
-          "name": "LAi Design Associates",
+          "name": "LAI Group",
           "description": "Premier architectural firm in Fort Myers, Florida specializing in luxury residential, commercial, and mixed-use architecture across Southwest Florida.",
-          "url": "https://laidesignassoc.com",
+          "url": "https://laigroup.com",
           "telephone": "+1-239-555-0100",
-          "email": "hello@laidesignassoc.com",
+          "email": "hello@laigroup.com",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "12800 University Drive, Suite 300",
@@ -77,8 +77,8 @@ export default function Home() {
             }
           ],
           "sameAs": [
-            "https://www.instagram.com/laidesignassoc",
-            "https://www.linkedin.com/company/lai-design-associates"
+            "https://www.instagram.com/laigroup",
+            "https://www.linkedin.com/company/lai-group"
           ]
         })}</script>
       </Helmet>
