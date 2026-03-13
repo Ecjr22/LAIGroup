@@ -11,9 +11,9 @@ import arthrexAMISC from "@assets/Arthrex-AMISC_1773411287410.jpg";
 import clubParagon from "@assets/Club-Paragon_1773411287411.jpg";
 
 const slides = [
-  { image: miromarLakes, label: "Miromar Lakes — Residential" },
   { image: innovationPrep, label: "Innovation Preparatory Academy — Education" },
   { image: arthrexAMIE, label: "Arthrex AMIE — Medical Manufacturing" },
+  { image: miromarLakes, label: "Miromar Lakes — Residential" },
   { image: hollywoodAcademy, label: "Hollywood Academy of Arts & Sciences" },
   { image: arthrexAMISC, label: "Arthrex AMISC — South Carolina" },
   { image: clubParagon, label: "Club Paragon — Commercial" },

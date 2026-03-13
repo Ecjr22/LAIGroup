@@ -1,7 +1,8 @@
+import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "wouter";
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, X } from "lucide-react";
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -13,10 +14,42 @@ import miromarLakes from "@assets/Miromar-Lakes_1773411287414.jpg";
 import arthrexAMISC from "@assets/Arthrex-AMISC_1773411287410.jpg";
 
 const featured = [
-  { title: "Innovation Preparatory Academy", type: "Education · Fort Myers, FL", image: innovationPrep },
-  { title: "Arthrex AMIE", type: "Medical Manufacturing · Southwest FL", image: arthrexAMIE },
-  { title: "Miromar Lakes", type: "Residential · Miromar Lakes, FL", image: miromarLakes },
-  { title: "Arthrex AMISC", type: "Medical Manufacturing · South Carolina", image: arthrexAMISC },
+  {
+    title: "Innovation Preparatory Academy",
+    type: "Education · Fort Myers, FL",
+    image: innovationPrep,
+    cost: "$13M",
+    size: "69,850 sq ft",
+    completed: "August 2020",
+    description: "LAI partnered with Charter Schools USA and Ryan Companies to provide design engineering services for this two-story school, including a circular stairway and indoor track.",
+  },
+  {
+    title: "Arthrex AMIE",
+    type: "Medical Manufacturing · Southwest FL",
+    image: arthrexAMIE,
+    cost: "$36M",
+    size: "400,000 gsf",
+    completed: "November 2012",
+    description: "Programming and design of a landmark medical manufacturing facility for Arthrex, providing quality products and educational services for orthopaedic surgeons worldwide.",
+  },
+  {
+    title: "Miromar Lakes",
+    type: "Residential · Miromar Lakes, FL",
+    image: miromarLakes,
+    cost: "$1.4M",
+    size: "3,600 sq ft",
+    completed: "April 2019",
+    description: "LAI performed a design/build remodel of this stunning single-family home.",
+  },
+  {
+    title: "Arthrex AMISC",
+    type: "Medical Manufacturing · South Carolina",
+    image: arthrexAMISC,
+    cost: "$39M",
+    size: "253,000 gsf",
+    completed: "June 2019",
+    description: "Programming and design of the expansion of Arthrex's medical manufacturing facility to South Carolina.",
+  },
 ];
 
 const services = [
@@ -27,6 +60,8 @@ const services = [
 ];
 
 export default function Home() {
+  const [activeProject, setActiveProject] = useState<number | null>(null);
+
   return (
     <>
       <Helmet>
@@ -71,7 +106,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Work */}
+      {/* Featured Projects */}
       <section className="py-24 md:py-32 px-6 bg-muted">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-end justify-between mb-14">
@@ -82,11 +117,11 @@ export default function Home() {
               transition={{ duration: 0.7 }}
             >
               <p className="font-sans text-[11px] tracking-[0.35em] uppercase text-muted-foreground mb-3">Portfolio</p>
-              <h2 className="font-display text-4xl md:text-5xl text-foreground">Selected Works</h2>
+              <h2 className="font-display text-4xl md:text-5xl text-foreground">Selected Projects</h2>
             </motion.div>
             <Link href="/work">
               <span className="hidden md:inline-flex items-center gap-2 font-sans text-xs tracking-[0.18em] uppercase text-foreground hover:text-primary transition-colors cursor-pointer group">
-                View All <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                View All Projects <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </span>
             </Link>
           </div>
@@ -100,6 +135,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: i * 0.1 }}
                 className="group relative overflow-hidden aspect-[4/3] bg-muted cursor-pointer"
+                onClick={() => setActiveProject(i)}
               >
                 <img
                   src={project.image}
@@ -107,10 +143,13 @@ export default function Home() {
                   loading={i < 2 ? "eager" : "lazy"}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-500" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/55 transition-colors duration-500" />
                 <div className="absolute bottom-0 left-0 right-0 p-7 translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
                   <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-white/70 mb-1">{project.type}</p>
-                  <h3 className="font-display text-xl text-white">{project.title}</h3>
+                  <div className="flex items-center justify-between">
+                    <h3 className="font-display text-xl text-white">{project.title}</h3>
+                    <span className="font-sans text-[10px] tracking-[0.15em] uppercase text-white/60 border border-white/30 px-3 py-1 rounded-full">Details</span>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -119,12 +158,87 @@ export default function Home() {
           <div className="mt-10 text-center md:hidden">
             <Link href="/work">
               <span className="inline-flex items-center gap-2 font-sans text-xs tracking-[0.18em] uppercase text-foreground hover:text-primary transition-colors cursor-pointer">
-                View All Work <ArrowRight className="w-3.5 h-3.5" />
+                View All Projects <ArrowRight className="w-3.5 h-3.5" />
               </span>
             </Link>
           </div>
         </div>
       </section>
+
+      {/* Featured Project Lightbox */}
+      <AnimatePresence>
+        {activeProject !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 md:p-10"
+            onClick={() => setActiveProject(null)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96, y: 16 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96, y: 16 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-white rounded-2xl overflow-hidden max-w-4xl w-full shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Image */}
+              <div className="relative aspect-[16/7] overflow-hidden">
+                <img
+                  src={featured[activeProject].image}
+                  alt={featured[activeProject].title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <button
+                  onClick={() => setActiveProject(null)}
+                  className="absolute top-4 right-4 w-9 h-9 bg-white/15 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/25 transition-colors"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+                <div className="absolute bottom-5 left-7">
+                  <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-white/65 mb-1">{featured[activeProject].type}</p>
+                  <h3 className="font-display text-2xl md:text-3xl text-white">{featured[activeProject].title}</h3>
+                </div>
+              </div>
+
+              {/* Details */}
+              <div className="p-7 md:p-10">
+                <p className="font-sans text-muted-foreground leading-relaxed mb-8 text-sm md:text-base">
+                  {featured[activeProject].description}
+                </p>
+                <div className="grid grid-cols-3 gap-4 border-t border-border pt-7">
+                  {[
+                    { label: "Cost", value: featured[activeProject].cost },
+                    { label: "Size", value: featured[activeProject].size },
+                    { label: "Completed", value: featured[activeProject].completed },
+                  ].map((stat) => (
+                    <div key={stat.label}>
+                      <p className="font-sans text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-1">{stat.label}</p>
+                      <p className="font-sans text-sm font-medium text-foreground">{stat.value}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-7 pt-6 border-t border-border flex justify-between items-center">
+                  <Link href="/work">
+                    <span className="inline-flex items-center gap-2 font-sans text-xs tracking-[0.18em] uppercase text-primary cursor-pointer hover:gap-3 transition-all">
+                      See All Projects <ArrowRight className="w-3.5 h-3.5" />
+                    </span>
+                  </Link>
+                  <button
+                    onClick={() => setActiveProject(null)}
+                    className="font-sans text-xs tracking-[0.18em] uppercase text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Timelapse */}
       <TimeLapse />
