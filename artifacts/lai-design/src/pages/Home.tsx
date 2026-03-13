@@ -3,6 +3,7 @@ import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
 import { WorkGrid } from "@/components/WorkGrid";
 import { AboutUs } from "@/components/AboutUs";
+import { TeamSection } from "@/components/TeamSection";
 import { TimeLapse } from "@/components/TimeLapse";
 import { ContactFooter } from "@/components/ContactFooter";
 
@@ -99,6 +100,7 @@ export default function Home() {
         </section>
 
         <AboutUs />
+        <TeamSection />
         <ContactFooter />
       </main>
     </>

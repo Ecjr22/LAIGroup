@@ -24,8 +24,7 @@ export function Nav() {
 
   const navLinks = [
     { name: "Work", id: "work" },
-    { name: "Studio", id: "about" },
-    { name: "Aerial", id: "drone" },
+    { name: "Studio", id: "studio" },
     { name: "Contact", id: "contact" },
   ];
 

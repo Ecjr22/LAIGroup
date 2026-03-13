@@ -149,12 +149,16 @@ export function ContactFooter() {
         </div>
 
         {/* Footer Bottom */}
-        <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center text-xs font-sans text-muted-foreground tracking-wider uppercase">
+        <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center text-xs font-sans text-muted-foreground tracking-wider uppercase gap-4">
           <p>© {new Date().getFullYear()} LAI Group. All Rights Reserved.</p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
-          </div>
+          <a
+            href="https://www.carmonacreations.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground/50 hover:text-primary/70 transition-colors tracking-[0.15em] normal-case font-sans text-[10px]"
+          >
+            Crafted by Carmona Creations LLC
+          </a>
         </div>
       </div>
     </footer>
