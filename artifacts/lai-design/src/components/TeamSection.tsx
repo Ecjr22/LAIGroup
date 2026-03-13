@@ -19,10 +19,10 @@ const architects = [
     role: "Design Director",
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800",
     collage: [
-      "https://images.unsplash.com/photo-1501446529957-6226bd447c46?auto=format&fit=crop&q=80&w=400",
-      "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?auto=format&fit=crop&q=80&w=400",
-      "https://images.unsplash.com/photo-1542662565-7e4fd7ee44d4?auto=format&fit=crop&q=80&w=400",
-      "https://images.unsplash.com/photo-1416879598555-2591ad042171?auto=format&fit=crop&q=80&w=400",
+      "https://picsum.photos/seed/travel1/400/300",
+      "https://picsum.photos/seed/garden2/400/300",
+      "https://picsum.photos/seed/ceramics3/400/300",
+      "https://picsum.photos/seed/ocean4/400/300",
     ]
   },
   {
@@ -31,10 +31,10 @@ const architects = [
     role: "Project Architect",
     image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=800",
     collage: [
-      "https://images.unsplash.com/photo-1541888087643-f6610fb27c59?auto=format&fit=crop&q=80&w=400",
-      "https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&q=80&w=400",
-      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=400",
-      "https://images.unsplash.com/photo-1503694978374-8a2fa686963a?auto=format&fit=crop&q=80&w=400",
+      "https://picsum.photos/seed/mountain5/400/300",
+      "https://picsum.photos/seed/drone6/400/300",
+      "https://picsum.photos/seed/sport7/400/300",
+      "https://picsum.photos/seed/wood8/400/300",
     ]
   }
 ];

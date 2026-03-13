@@ -21,11 +21,12 @@ export function Hero() {
       </motion.div>
 
       {/* Gradient overlays */}
-      <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.4) 35%, transparent 60%)' }} />
+      <div className="absolute inset-0" style={{ background: 'rgba(0,0,0,0.45)' }} />
+      <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.5) 100%)' }} />
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0d0d0f] to-transparent" />
 
       {/* Content */}
-      <div className="absolute inset-0 flex flex-col items-start justify-center px-8 md:px-16 lg:px-24 pt-20">
+      <div className="absolute inset-0 flex flex-col items-center justify-center px-8 md:px-16 lg:px-24 pt-20 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
