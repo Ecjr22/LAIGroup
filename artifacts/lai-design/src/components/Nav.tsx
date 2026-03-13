@@ -28,6 +28,11 @@ export function Nav() {
     window.scrollTo({ top: 0 });
   }, [location]);
 
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileMenuOpen]);
+
   const navBg = isHome
     ? isScrolled
       ? "bg-white/90 backdrop-blur-xl shadow-sm shadow-black/5 py-4"
@@ -38,44 +43,47 @@ export function Nav() {
   const linkColor = isHome && !isScrolled ? "text-white/90 hover:text-white" : "text-foreground/70 hover:text-foreground";
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${navBg}`}>
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <Link href="/">
-          <span className={`font-display text-xl tracking-widest uppercase cursor-pointer transition-colors duration-300 ${logoColor}`}>
-            LAI GROUP
-          </span>
-        </Link>
+    <>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${navBg}`}>
+        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+          <Link href="/">
+            <span className={`font-display text-xl tracking-widest uppercase cursor-pointer transition-colors duration-300 ${logoColor}`}>
+              LAI GROUP
+            </span>
+          </Link>
 
-        <div className="hidden md:flex items-center space-x-10">
-          {navLinks.map((link) => {
-            const active = location === link.href;
-            return (
-              <Link key={link.name} href={link.href}>
-                <span className={`font-sans text-[11px] tracking-[0.18em] uppercase cursor-pointer transition-colors duration-300 relative pb-1 ${linkColor} ${active ? "after:scale-x-100" : "after:scale-x-0"} after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-current after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100`}>
-                  {link.name}
-                </span>
-              </Link>
-            );
-          })}
+          <div className="hidden md:flex items-center space-x-10">
+            {navLinks.map((link) => {
+              const active = location === link.href;
+              return (
+                <Link key={link.name} href={link.href}>
+                  <span className={`font-sans text-[11px] tracking-[0.18em] uppercase cursor-pointer transition-colors duration-300 relative pb-1 ${linkColor} ${active ? "after:scale-x-100" : "after:scale-x-0"} after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-current after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100`}>
+                    {link.name}
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+
+          <button
+            className={`md:hidden transition-colors ${isHome && !isScrolled ? "text-white" : "text-foreground"}`}
+            onClick={() => setMobileMenuOpen(true)}
+            aria-label="Open menu"
+          >
+            <Menu className="w-6 h-6" />
+          </button>
         </div>
+      </nav>
 
-        <button
-          className={`md:hidden transition-colors ${isHome && !isScrolled ? "text-white" : "text-foreground"}`}
-          onClick={() => setMobileMenuOpen(true)}
-          aria-label="Open menu"
-        >
-          <Menu className="w-6 h-6" />
-        </button>
-      </div>
-
+      {/* Mobile overlay — sibling of nav so backdrop-blur on nav doesn't trap it */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[60] bg-white flex flex-col items-center justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[200] bg-white flex flex-col items-center justify-center"
           >
             <button
               className="absolute top-7 right-6 text-foreground hover:text-primary transition-colors"
@@ -106,6 +114,6 @@ export function Nav() {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </>
   );
 }
