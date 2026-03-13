@@ -41,20 +41,17 @@ const architects = [
 
 export function TeamSection() {
   return (
-    <section id="team" className="py-24 md:py-32 px-4 md:px-6 bg-card/30">
+    <section id="team" className="py-16 md:py-24 px-4 md:px-6 bg-background">
       <div className="max-w-7xl mx-auto">
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mb-16 md:mb-24"
+          transition={{ duration: 0.7 }}
+          className="mb-14 md:mb-20"
         >
-          <p className="font-sans text-xs tracking-[0.4em] uppercase text-primary/70 mb-4">The People</p>
-          <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4">Meet the Team</h2>
-          <div className="w-16 h-[1px] bg-primary mt-6" />
-          <p className="font-sans text-muted-foreground mt-6 max-w-lg leading-relaxed text-sm">
+          <p className="font-sans text-sm text-muted-foreground leading-relaxed">
             Hover each card to discover the inspirations and passions behind the craft.
           </p>
         </motion.div>

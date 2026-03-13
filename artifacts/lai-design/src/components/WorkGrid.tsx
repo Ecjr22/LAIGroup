@@ -184,12 +184,7 @@ export function WorkGrid() {
   };
 
   return (
-    <section id="work" className="py-24 md:py-32 px-4 md:px-6 max-w-[1400px] mx-auto bg-background">
-      
-      <div className="mb-16 md:mb-24">
-        <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4">Selected Works</h2>
-        <div className="w-20 h-1 bg-primary" />
-      </div>
+    <section id="work" className="py-16 md:py-24 px-4 md:px-6 max-w-[1400px] mx-auto bg-background">
 
       {/* Editorial Grid */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
@@ -210,8 +205,8 @@ export function WorkGrid() {
               className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
             />
             {/* Hover Overlay */}
-            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
-              <p className="font-sans text-xs tracking-[0.2em] text-primary uppercase mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100">
+            <div className="absolute inset-0 bg-black/65 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+              <p className="font-sans text-xs tracking-[0.2em] text-white/65 uppercase mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100">
                 {project.type}
               </p>
               <h3 className="font-display text-2xl md:text-3xl text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
@@ -229,78 +224,83 @@ export function WorkGrid() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-black/95 flex flex-col backdrop-blur-md"
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 md:p-10"
             onClick={closeLightbox}
           >
-            {/* Top Bar */}
-            <div className="absolute top-0 left-0 right-0 p-6 flex justify-between items-center z-10 bg-gradient-to-b from-black/80 to-transparent">
-              <div className="text-white">
-                <h4 className="font-display text-2xl md:text-3xl">{projects[activeProject].title}</h4>
-                <p className="font-sans text-sm text-primary tracking-wider uppercase mt-1">
-                  {projects[activeProject].type}
-                </p>
-              </div>
-              <button 
-                onClick={closeLightbox}
-                className="p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors text-white"
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </div>
+            {/* Prev / Next — outside the card */}
+            <button
+              onClick={prevProject}
+              className="absolute left-4 md:left-6 z-10 w-10 h-10 bg-white/90 hover:bg-white text-foreground rounded-full flex items-center justify-center shadow-md transition-all"
+              aria-label="Previous project"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={nextProject}
+              className="absolute right-4 md:right-6 z-10 w-10 h-10 bg-white/90 hover:bg-white text-foreground rounded-full flex items-center justify-center shadow-md transition-all"
+              aria-label="Next project"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
 
-            {/* Main Image Area */}
-            <div className="flex-1 flex items-center justify-center p-4 md:p-12 relative overflow-hidden">
-              <button 
-                onClick={prevProject}
-                className="absolute left-4 md:left-8 p-3 bg-black/50 hover:bg-primary/80 text-white rounded-full transition-all z-10"
-              >
-                <ChevronLeft className="w-8 h-8" />
-              </button>
-              
-              <motion.img 
-                key={activeProject}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4 }}
-                src={projects[activeProject].image} 
-                alt={projects[activeProject].title}
-                className="max-w-full max-h-[75vh] object-contain shadow-2xl"
-              />
-
-              <button 
-                onClick={nextProject}
-                className="absolute right-4 md:right-8 p-3 bg-black/50 hover:bg-primary/80 text-white rounded-full transition-all z-10"
-              >
-                <ChevronRight className="w-8 h-8" />
-              </button>
-            </div>
-
-            {/* Details Panel */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="bg-background border-t border-border/20 p-6 md:p-8"
+            <motion.div
+              key={activeProject}
+              initial={{ opacity: 0, scale: 0.96, y: 16 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-white rounded-2xl overflow-hidden max-w-4xl w-full shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8">
-                <div className="md:col-span-8 text-foreground/90 font-sans text-base leading-relaxed">
-                  <p>{projects[activeProject].description}</p>
+              {/* Image */}
+              <div className="relative aspect-[16/7] overflow-hidden">
+                <img
+                  src={projects[activeProject].image}
+                  alt={projects[activeProject].title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
+                <button
+                  onClick={closeLightbox}
+                  className="absolute top-4 right-4 w-9 h-9 bg-white/15 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/25 transition-colors"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+                <div className="absolute bottom-5 left-7">
+                  <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-white/65 mb-1">
+                    {projects[activeProject].type}
+                  </p>
+                  <h3 className="font-display text-2xl md:text-3xl text-white">
+                    {projects[activeProject].title}
+                  </h3>
                 </div>
-                <div className="md:col-span-4 flex flex-col space-y-4 font-sans border-l border-border/20 pl-6 md:pl-8">
-                  <div>
-                    <p className="text-xs text-muted-foreground uppercase tracking-widest mb-1">Cost</p>
-                    <p className="text-foreground font-medium">{projects[activeProject].cost}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground uppercase tracking-widest mb-1">Size</p>
-                    <p className="text-foreground font-medium">{projects[activeProject].size}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground uppercase tracking-widest mb-1">Completed</p>
-                    <p className="text-foreground font-medium">{projects[activeProject].completed}</p>
-                  </div>
+              </div>
+
+              {/* Details */}
+              <div className="p-7 md:p-10">
+                <p className="font-sans text-muted-foreground leading-relaxed mb-8 text-sm md:text-base">
+                  {projects[activeProject].description}
+                </p>
+                <div className="grid grid-cols-3 gap-4 border-t border-border pt-7">
+                  {[
+                    { label: "Cost", value: projects[activeProject].cost },
+                    { label: "Size", value: projects[activeProject].size },
+                    { label: "Completed", value: projects[activeProject].completed },
+                  ].map((stat) => (
+                    <div key={stat.label}>
+                      <p className="font-sans text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-1">{stat.label}</p>
+                      <p className="font-sans text-sm font-medium text-foreground">{stat.value}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 pt-6 border-t border-border flex justify-end">
+                  <button
+                    onClick={closeLightbox}
+                    className="font-sans text-xs tracking-[0.18em] uppercase text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    Close
+                  </button>
                 </div>
               </div>
             </motion.div>

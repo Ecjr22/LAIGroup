@@ -17,7 +17,7 @@ const values = [
 
 export function AboutUs() {
   return (
-    <section id="studio" className="py-24 md:py-40 px-4 md:px-6 bg-background">
+    <section id="studio" className="py-16 md:py-24 px-4 md:px-6 bg-background">
       <div className="max-w-7xl mx-auto">
 
         {/* Mission */}
@@ -28,7 +28,6 @@ export function AboutUs() {
             viewport={{ once: true }}
             transition={{ duration: 0.9 }}
           >
-            <p className="font-sans text-xs tracking-[0.4em] uppercase text-primary/70 mb-6">Who We Are</p>
             <h2 className="font-display text-4xl md:text-5xl text-foreground leading-tight mb-8">Our Mission</h2>
             <div className="w-16 h-[1px] bg-primary mb-10" />
           </motion.div>
