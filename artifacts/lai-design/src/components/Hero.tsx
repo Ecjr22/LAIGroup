@@ -33,9 +33,9 @@ export function Hero() {
           transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-5xl"
         >
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-foreground leading-[1.1] tracking-wide drop-shadow-2xl">
-            Architecture <br />
-            <span className="italic text-primary/90">Rooted</span> in Place
+          <h1 className="font-display text-6xl md:text-8xl lg:text-[7rem] text-foreground leading-[1.0] tracking-wide drop-shadow-2xl font-light">
+            Bold Design.<br />
+            <span className="italic text-primary/90">Limitless</span> Vision.
           </h1>
           <motion.div 
             initial={{ opacity: 0 }}
@@ -44,8 +44,8 @@ export function Hero() {
             className="mt-8 flex items-center justify-center space-x-4"
           >
             <div className="h-[1px] w-12 bg-primary/50" />
-            <p className="font-sans text-xs md:text-sm tracking-[0.4em] uppercase text-foreground/80">
-              Fort Myers <span className="text-primary mx-2">·</span> Southwest Florida
+            <p className="font-sans text-xs md:text-sm tracking-[0.4em] uppercase text-foreground/70">
+              Florida <span className="text-primary mx-2">·</span> South Carolina <span className="text-primary mx-2">·</span> Nationwide
             </p>
             <div className="h-[1px] w-12 bg-primary/50" />
           </motion.div>

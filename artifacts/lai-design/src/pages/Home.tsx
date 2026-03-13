@@ -43,14 +43,14 @@ export default function Home() {
           "name": "LAI Group",
           "description": "Premier architectural firm in Fort Myers, Florida specializing in luxury residential, commercial, and mixed-use architecture across Southwest Florida.",
           "url": "https://laigroup.com",
-          "telephone": "+1-239-555-0100",
+          "telephone": "+1-239-405-6888",
           "email": "hello@laigroup.com",
           "address": {
             "@type": "PostalAddress",
-            "streetAddress": "12800 University Drive, Suite 300",
-            "addressLocality": "Fort Myers",
+            "streetAddress": "9911 Corkscrew Road #202",
+            "addressLocality": "Estero",
             "addressRegion": "FL",
-            "postalCode": "33907",
+            "postalCode": "33928",
             "addressCountry": "US"
           },
           "geo": {
