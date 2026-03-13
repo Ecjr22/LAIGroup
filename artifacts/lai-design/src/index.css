@@ -16,23 +16,22 @@
 }
 
 :root {
-  /* Dark sophisticated palette with warm stone accents */
-  --background: 240 6% 7%;      /* Almost black/charcoal */
-  --foreground: 60 15% 95%;     /* Off-white/cream */
-  
-  --primary: 27 24% 65%;        /* Warm stone / beige */
-  --primary-foreground: 240 6% 7%; 
-  
-  --muted: 240 4% 12%;          /* Slightly lighter charcoal */
-  --muted-foreground: 60 5% 60%; /* Dimmed text */
-  
-  --border: 240 4% 20%;         /* Subtle dark borders */
-  --card: 240 5% 9%;            /* Card backgrounds */
+  --background: 0 0% 100%;          /* Pure white */
+  --foreground: 240 5% 10%;         /* Near-black #18181b */
+
+  --primary: 215 30% 22%;           /* Deep slate navy */
+  --primary-foreground: 0 0% 100%;
+
+  --muted: 240 5% 96%;              /* Apple light gray #f5f5f7 */
+  --muted-foreground: 240 4% 46%;   /* Medium gray #71717a */
+
+  --border: 240 6% 88%;             /* Subtle light border */
+  --card: 0 0% 100%;                /* White cards */
 }
 
 @layer base {
   body {
-    @apply bg-background text-foreground antialiased font-sans overflow-x-hidden selection:bg-primary selection:text-primary-foreground;
+    @apply bg-background text-foreground antialiased font-sans overflow-x-hidden selection:bg-primary/10 selection:text-primary;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -57,8 +56,7 @@
   .group:hover .group-hover\:rotate-y-180 {
     transform: rotateY(180deg);
   }
-  
-  /* Hide scrollbar for clean modals */
+
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }

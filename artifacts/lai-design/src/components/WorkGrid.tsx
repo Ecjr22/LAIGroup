@@ -184,12 +184,7 @@ export function WorkGrid() {
   };
 
   return (
-    <section id="work" className="py-24 md:py-32 px-4 md:px-6 max-w-[1400px] mx-auto bg-background">
-      
-      <div className="mb-16 md:mb-24">
-        <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4">Selected Works</h2>
-        <div className="w-20 h-1 bg-primary" />
-      </div>
+    <section id="work" className="py-16 md:py-24 px-4 md:px-6 max-w-[1400px] mx-auto bg-background">
 
       {/* Editorial Grid */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">

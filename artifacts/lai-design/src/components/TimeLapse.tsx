@@ -3,7 +3,7 @@ import timelapseVideo from "@assets/timeLapse1_1773415844499.mp4";
 
 export function TimeLapse() {
   return (
-    <section className="bg-background py-16 px-4 md:px-6">
+    <section className="bg-muted py-24 md:py-32 px-4 md:px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
 
@@ -28,7 +28,7 @@ export function TimeLapse() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="relative overflow-hidden rounded-lg border border-border/30 shadow-xl shadow-black/40 bg-black"
+            className="relative overflow-hidden rounded-xl border border-border bg-black shadow-md shadow-black/10"
           >
             <video
               src={timelapseVideo}

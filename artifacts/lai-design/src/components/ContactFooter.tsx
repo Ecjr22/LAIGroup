@@ -20,9 +20,9 @@ export function ContactFooter() {
   };
 
   return (
-    <footer id="contact" className="bg-background pt-32 pb-12 px-4 md:px-6 border-t border-border">
+    <footer id="contact" className="bg-background pt-16 pb-12 px-4 md:px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 mb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 mb-16">
           
           {/* Left Column: Info */}
           <motion.div 
@@ -31,12 +31,7 @@ export function ContactFooter() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="font-display text-5xl md:text-6xl text-foreground mb-8 leading-tight">
-              Start Your <br/>
-              <span className="text-primary italic">Project</span>
-            </h2>
-            
-            <div className="space-y-8 font-sans text-muted-foreground text-lg">
+            <div className="space-y-8 font-sans text-muted-foreground text-base mt-8">
               <div>
                 <p className="font-display text-foreground text-xl mb-2">LAI Group</p>
                 <p>9911 Corkscrew Road #202</p>
@@ -67,7 +62,7 @@ export function ContactFooter() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="bg-card p-8 md:p-12 rounded-lg border border-border/50 shadow-2xl"
+            className="bg-muted p-8 md:p-12 rounded-2xl border border-border shadow-sm"
           >
             {submitMutation.isSuccess ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-20">
